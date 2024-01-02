@@ -1,5 +1,9 @@
-exports.handler = async function (event, context) {
-    console.log("This is a sample Azure function provided by Techie-In-You");
-    console.log("EVENT: \n" + JSON.stringify(event, null, 2));
-    return context.logStreamName;
-  };
+module.exports = async function (context, myTimer) {
+  var timeStamp = new Date().toISOString();
+  
+  if (myTimer.isPastDue)
+  {
+      context.log('JavaScript is running late!');
+  }
+  context.log('JavaScript timer trigger function ran!', timeStamp);   
+};

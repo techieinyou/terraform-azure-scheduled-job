@@ -39,16 +39,16 @@ variable "function_language" {
   description = "Language of the code written for scheduled job.  All supported langauges are listed in README."
   validation {
     condition     = contains(["nodejs", "python"], var.function_language)
-    error_message = "Unsupported Language <${var.function_language}>. Supported values are <nodejs, python>"
+    error_message = "Unsupported Language <${var.function_language}>. Supported values are <nodejs, Python>"
   }
 }
 
 variable "function_runtime" {
   type        = string
-  default     = "nodejs20.x"
+  default     = "16"
   description = "Runtime identifier based on the language and version the scheduled-job code is written. All supported runtimes are listed in README."
   validation {
-    condition     = contains(["nodejs20.x", "nodejs18.x", "nodejs16.x", "python3.12", "python3.11", "python3.10", "python3.9", "python3.8", null], var.function_runtime)
+    condition     = contains(["16", "14", "12", "3.9", "3.8", "3.7", "3.6", null], var.function_runtime)
     error_message = "Unsupported runtime <${var.function_runtime}>"
   }
 }

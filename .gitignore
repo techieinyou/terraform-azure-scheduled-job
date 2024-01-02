@@ -37,3 +37,4 @@ override.tf.json
 # Ignore all environment variables and local batch
 *.env
 *.bat
+data*.json
