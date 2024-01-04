@@ -5,18 +5,23 @@ This module is published in Terraform as **TechieInYou/scheduled-job/azure**.
 
 
 # Supported Languages
-This module currently supports NodeJS and Python.  
+This module currently supports NodeJS and Python.  You can keep your node/python scripts in a folder and assign the folder path to **function_source_code_folder** variable. 
 
 
-Supported version for Nodejs
+## NodeJS
+
+### Supported version for Nodejs
+    - 18
     - 16
     - 14
     - 12
 
-
-Supported versions for Python
+### Supported versions for Python
     - 3.9
     - 3.8
     - 3.7
     - 3.6
+
+### Recommended Folder Structure
+
 

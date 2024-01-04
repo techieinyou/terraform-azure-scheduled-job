@@ -1,36 +1,29 @@
 variable "resource_group_name" {
   type        = string
   default     = null
-  description = "Azure Resource name where the function and other resources should be created"
+  description = "Azure Resource Group name where the function and other resources should be created."
 }
 
 variable "location" {
-  type    = string
-  default = "East US"
+  type        = string
+  default     = "East US"
+  description = "Location/Region where your function and resources should be deployed."
 }
 
 variable "function_app_name" {
   type        = string
   default     = "scheduled-jobs"
   description = "Name of the Function App."
+  validation {
+    condition     = (length(var.function_app_name) < 21)
+    error_message = "Function App name should be less than 20 characters"
+  }
 }
 
-variable "function_name" {
-  type        = string
-  default     = "scheduled-job1"
-  description = "Name of the Function for the scheduled job."
-}
-
-variable "function_source_file" {
+variable "function_source_code_folder" {
   type        = string
   default     = null
-  description = "File name where the code contains for scheduled job."
-}
-
-variable "function_handler" {
-  type        = string
-  default     = null
-  description = "Entry-point function name to start executing the function. Default values are Nodejs: index.handler,  Python: function_function.main."
+  description = "Folder with all source code files for the scheduled job."
 }
 
 variable "function_language" {
@@ -43,38 +36,14 @@ variable "function_language" {
   }
 }
 
-variable "function_runtime" {
+variable "function_runtime_version" {
   type        = string
-  default     = "16"
-  description = "Runtime identifier based on the language and version the scheduled-job code is written. All supported runtimes are listed in README."
+  default     = "18"
+  description = "Runtime identifier based on the language and version the scheduled-job code is written.  All supported runtimes are listed in README."
   validation {
-    condition     = contains(["16", "14", "12", "3.9", "3.8", "3.7", "3.6", null], var.function_runtime)
-    error_message = "Unsupported runtime <${var.function_runtime}>"
+    condition     = contains(["18", "16", "14", "12", "3.11", "3.10", "3.9", "3.8", "3.7", "3.6", null], var.function_runtime_version)
+    error_message = "Unsupported runtime version <${var.function_runtime_version}>"
   }
-}
-
-variable "function_timeout" {
-  type        = number
-  default     = 180
-  description = "Execution Timeout for the function."
-}
-
-variable "function_layers" {
-  type        = list(string)
-  default     = null
-  description = "List of function Layers to be used by the scheduled-job function."
-}
-
-variable "schedule" {
-  type        = string
-  default     = "rate(5 minutes)"
-  description = "The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). For more information, refer to the Azure documentation Schedule Expressions for Rules."
-}
-
-variable "function_env_vars" {
-  type        = map(any)
-  default     = null
-  description = "List of Environment variables referred by function."
 }
 
 variable "tags" {
