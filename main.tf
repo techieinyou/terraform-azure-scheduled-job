@@ -18,13 +18,13 @@ locals {
 locals {
   function_language        = local.language_default["${var.function_language}"]
   function_runtime_version = contains(local.function_language.runtime, var.function_runtime_version) ? var.function_runtime_version : local.function_language.runtime[0]
-  function_source_folder   = (var.function_source_code_folder == null) ? local.function_language.source_folder : var.function_source_code_folder
+  source_code_folder       = (var.source_code_folder == null) ? local.function_language.source_folder : var.source_code_folder
   function_description     = "This Scheduled Job written in ${local.function_runtime_version} and running on a schedule mentioned in the function.json"
 }
 
 data "archive_file" "function_package" {
   type        = "zip"
-  source_dir  = "${local.function_source_folder}/"
+  source_dir  = "${local.source_code_folder}/"
   output_path = "${var.function_app_name}-pkg.zip"
 }
 

@@ -19,7 +19,7 @@ variable "function_app_name" {
   }
 }
 
-variable "function_source_code_folder" {
+variable "source_code_folder" {
   type        = string
   default     = null
   description = "Folder with all source code files for the scheduled job."
