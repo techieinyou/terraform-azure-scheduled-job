@@ -1,6 +1,5 @@
 variable "resource_group_name" {
   type        = string
-  default     = null
   description = "Azure Resource Group name where the function and other resources should be created."
 }
 
@@ -12,7 +11,7 @@ variable "location" {
 
 variable "function_app_name" {
   type        = string
-  default     = "scheduled-jobs"
+  default     = "tiy-scheduled-jobs"
   description = "Name of the Function App."
   validation {
     condition     = (length(var.function_app_name) < 21)

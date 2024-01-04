@@ -23,5 +23,50 @@ This module currently supports NodeJS and Python.  You can keep your node/python
     - 3.6
 
 ### Recommended Folder Structure
+You can deploy multiple functions by keeping its code in seperate folders  (eg. job1, job2, etc.) by following below folder structure.  
+```
+.
+├── host.json
+├── job1 (folder)
+│   ├── function.json
+│   ├── index.js / index.py  (main script with your business logic)
+│   ├── other files referred by main script, if any
+│   └── readme.md (optional)
+└── jobN (folder)
+    └── same structure as job1
+```
+
+#### host.json content
+
+```
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[4.*, 5.0.0)"
+    }
+}
+```
+
+#### function.json content
+
+```
+{
+  "scriptFile": "<script file: index.js/index.py>",
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+
+
+
+
 
 
