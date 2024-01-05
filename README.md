@@ -1,7 +1,7 @@
-# terraform-azure-scheduled-job
+# Scheduled Job in Azure
 This Terraform module will package your Nodejs/Python code and upload to Azure Function, and schedule for running on specified intervals.  
 
-This module is published in Terraform as **TechieInYou/scheduled-job/azure**.   
+This module is published in Terraform as [**TechieInYou/scheduled-job/azure**](https://registry.terraform.io/modules/techieinyou/scheduled-job/azure/latest).  Similar module for AWS is also published as  [**TechieInYou/scheduled-job/aws**](https://registry.terraform.io/modules/techieinyou/scheduled-job/aws/latest). 
 
 # Supported Languages
 This module currently supports NodeJS and Python.  You can keep your node/python scripts in a folder and assign the folder path to **function_source_code_folder** variable. 
